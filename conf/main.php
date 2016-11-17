@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * function description
+ * 配置
  *
  * @author: rudy
  * @date: 2016/11/16

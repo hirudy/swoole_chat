@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * function description
+ * php工程打包
  *
  * @author: rudy
  * @date: 2016/11/16

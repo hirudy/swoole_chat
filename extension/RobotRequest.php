@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * function description
+ * 请求具体的机器人数据
  *
  * @author: rudy
  * @date: 2016/11/16

@@ -2,6 +2,7 @@
 /**
  *
  * swoole chat example
+ * 入口程序
  *
  * @author: rudy
  * @date: 2016/11/16
@@ -37,6 +38,7 @@ $server->on('Message', function($server, $frame) {
         "message" => $frame->data
     );
     $server->push($frame->fd, json_encode($request));
+    // 请求不多暂时先用同步http请求
     $data = RobotRequest::request($frame->fd,$frame->data);
     $data["position"] = "right";
     $server->push($frame->fd, json_encode($data));
