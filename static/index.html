@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>websocket test</title>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+
+<script>
+    //验证浏览器是否支持WebSocket协议
+    if (!window.WebSocket) {
+        alert("WebSocket not supported by this browser!");
+    }
+</script>
+<div>
+    <div style="height: 20px;">
+        <label id="message_bar"></label>
+    </div>
+    <textarea rows="20" cols="30" id="contentId">
+
+    </textarea>
+    <div>
+        <button id="send_button" onclick="javascript:sendMessage();">send</button>
+        <input id="send_text" type="text" value="hello world">
+    </div>
+</div>
+
+<script>
+    var uri = "ws://localhost:7888";
+    var socket = new WebSocket(uri);
+    socket.onopen = function (event) {
+        $("#message_bar").text("websocket is running!");
+        console.log(event)
+    };
+
+    socket.onmessage = function (event) {
+        var data = JSON.parse(event.data);
+        var text = $("#contentId").text() + "\n" + data.message;
+        $("#contentId").text(text);
+        console.log(event)
+    };
+
+    socket.onclose = function (event) {
+        $("#message_bar").text("websocket is closed!");
+        console.log(event)
+    };
+
+    function sendMessage() {
+        var content = $("#send_text").val();
+        socket.send(content);
+    }
+</script>
+</body>
+</html>
